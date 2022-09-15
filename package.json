@@ -1,0 +1,8 @@
+{
+  "name": "ydkjsy_2nd_practice",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "^0.1.0"
+  }
+}
