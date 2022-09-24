@@ -1,3 +1,5 @@
+import { setMaxListeners } from "events"
+
 const randMax = (max) => {
 	return Math.trunc(1e9 * Math.random()) % max
 }
@@ -33,6 +35,24 @@ const slotMachine = {
 	},
 	display() {
 		// TODO
+		/*
+			Loop from -1 to including 1 to get position before, current and position after
+			Map through the reels array and 
+			Create a new object to delegate from
+			use the for loop i to get the position from the slot object
+		*/
+		let lines = []
+		for (let i = -1; i <= 1; i++) {
+			let line = this.reels.map((reel) => {
+				let slot = Object.create(reel)
+				slot.position =
+					(reel.symbols.length + reel.position + i) % reel.symbols.length
+				return slot.display()
+			})
+			console.log(line)
+			lines.push(line.join(" | "))
+		}
+		console.log(lines.join("\n"))
 	}
 }
 
@@ -42,8 +62,8 @@ slotMachine.display()
 // @ | X | <
 // X | Y | @
 
-slotMachine.spin()
-slotMachine.display()
+// slotMachine.spin()
+// slotMachine.display()
 // Z | X | W
 // W | Y | $
 // $ | Z | *
