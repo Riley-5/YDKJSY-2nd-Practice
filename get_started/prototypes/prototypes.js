@@ -37,9 +37,10 @@ const slotMachine = {
 		// TODO
 		/*
 			Loop from -1 to including 1 to get position before, current and position after
-			Map through the reels array and 
+			Map through the reels array and save returned array in variable line
 			Create a new object to delegate from
 			use the for loop i to get the position from the slot object
+			Manipulate output to get a 3x3 grid
 		*/
 		let lines = []
 		for (let i = -1; i <= 1; i++) {
@@ -49,7 +50,6 @@ const slotMachine = {
 					(reel.symbols.length + reel.position + i) % reel.symbols.length
 				return slot.display()
 			})
-			console.log(line)
 			lines.push(line.join(" | "))
 		}
 		console.log(lines.join("\n"))
@@ -62,8 +62,8 @@ slotMachine.display()
 // @ | X | <
 // X | Y | @
 
-// slotMachine.spin()
-// slotMachine.display()
+slotMachine.spin()
+slotMachine.display()
 // Z | X | W
 // W | Y | $
 // $ | Z | *
